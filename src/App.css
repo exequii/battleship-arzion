@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Chango&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Poppins&family=Press+Start+2P&display=swap');
 
 .App {
   text-align: center;
-
+  height: 100vmin;
+  background: rgb(230,230,230);
+  background: radial-gradient(circle, rgba(230,230,230,1) 1%, rgba(217,234,241,1) 89%, rgba(135,221,249,1) 100%);
 }
 
 h1{
@@ -11,6 +13,10 @@ h1{
 
 h2{
   font-family: 'Press Start 2P', cursive;
+}
+
+label, button, a, input{
+  font-family: 'Poppins', sans-serif;
 }
 
 .grid-display{
@@ -34,4 +40,71 @@ h2{
 
 #namePlayer{
   transform: rotate(-45deg);
+}
+
+.ship{
+  background-color: grey;
+  border-radius: 3px;
+  margin: 2vmin;
+  display: grid;
+  border: 1px solid black;
+}
+
+.carrier-horizontal{
+  grid-template-rows: repeat(1, 4.6vmin);
+  grid-template-columns: repeat(4, 4.6vmin);
+}
+
+.crusier-horizontal{
+  grid-template-rows: repeat(1, 4.6vmin);
+  grid-template-columns: repeat(3, 4.6vmin);
+}
+
+.submarine-horizontal{
+  grid-template-rows: repeat(1, 4.6vmin);
+  grid-template-columns: repeat(2, 4.6vmin);
+}
+
+.carrier-vertical{
+  grid-template-rows: repeat(4, 4.6vmin);
+  grid-template-columns: repeat(1, 4.6vmin);
+}
+
+.crusier-vertical{
+  grid-template-rows: repeat(3, 4.6vmin);
+  grid-template-columns: repeat(1, 4.6vmin);
+}
+
+.submarine-vertical{
+  grid-template-rows: repeat(2, 4.6vmin);
+  grid-template-columns: repeat(1, 4.6vmin);
+}
+
+.space-ship{
+  width: 4.6vmin;
+  height: 4.6vmin;
+}
+
+  /* .taken{
+    background-color: rgb(143, 143, 143);
+  } */
+
+ /* .submarine{
+  background-color: rgb(145, 64, 64);
+}
+
+.cruiser{
+  background-color: rgb(100, 211, 100);
+}
+
+.carrier{
+  background-color: rgb(194, 194, 65);
+}  */
+
+.sunken{
+  background-color: rgb(180, 48, 48) !important;
+}
+
+.water{
+  background-color: rgb(49, 49, 236) !important;
 }

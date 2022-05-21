@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom'
 
 const Endgame = () => {
 
+
+  const finished = false;
+
   const restart = () => {
 
   }
@@ -11,8 +14,17 @@ const Endgame = () => {
   return (
     <div>
       <Title title="BATTLESHIP"></Title>
-      <h2>GANASTE | PERDISTE | TE RENDISTE</h2>
-      <Link to="/" className='btn btn-danger' onClick={restart}>GO BACK</Link>
+      {
+        finished ?
+        <>
+          <h2>WON | YOU LOST | YOU GAVE UP</h2>
+        </>
+        :
+        <>
+          <h2>YOU DIDN'T FINISH THE GAME</h2>
+        </>
+      }
+    <Link to="/" className='btn btn-danger' onClick={restart}>GO BACK</Link>
     </div>
   )
 }
