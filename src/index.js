@@ -1,14 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'
+import { createStore, combineReducers } from "redux"
+import { Provider } from "react-redux"
+import { battleshippReducer} from './reducers/battleshipReducer';
+import { namePlayerReducer } from './reducers/namePlayerReducer';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+const reducers = combineReducers({
+  stateGame: battleshippReducer,
+  namePlayer: namePlayerReducer
+})
+const store = createStore(reducers);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
 );
 

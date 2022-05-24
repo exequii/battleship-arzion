@@ -1,21 +1,34 @@
 import React, {useState} from 'react'
 import Title from "../components/Title"
 import {Link} from 'react-router-dom'
-import Board from "../components/Board"
+import BoardPlayer from "../components/BoardPlayer"
 import Ship from "../components/Ship"
+import { useDispatch, useSelector } from "react-redux"
 
 const Home = () => {
 
+  const dispatch = useDispatch()
   const userSquares = [];
   const [namePlayer, setNamePlayer] = useState("");
   const [direction, setDirection] = useState("horizontal");
+
+  const startGame = {
+    type: "@battleship/initialization",
+    stateGame: "starting"
+  }
+
+  const setPlayer = {
+    type: "@player/saveNamePlayer",
+    name: namePlayer
+  }
 
   const handleChangeInputText = (event) => {
     setNamePlayer(event.target.value)
   }
   
   const initialization = () => {
-    
+    dispatch(startGame)
+    dispatch(setPlayer)
   }
 
   const rotate = () => {
@@ -29,7 +42,7 @@ const Home = () => {
 
       <div className='row d-flex w-100'>
         <div className='w-50'>
-            <Board squares={userSquares} player={namePlayer}></Board>
+            <BoardPlayer squares={userSquares} player={namePlayer}></BoardPlayer>
         </div>
 
         <div className='container w-50 p-5'>
@@ -43,8 +56,6 @@ const Home = () => {
 
           </div>
         </div>
-
-
 
       </div>
 

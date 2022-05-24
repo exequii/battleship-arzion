@@ -2,10 +2,9 @@ import React from 'react'
 import computerShips from '../computerShips';
 
 
-const Board = (props) => {
-    var squares = []
-    const namePlayer = props.player || "Player 1";
-    const isCpu = props.player === "CPU" ? true : false;
+const BoardCpu = (props) => {
+    var squares = [];
+    const namePlayer = props.player || "CPU";
 
     for(let i = 0; i < 100; i++){
       var obj = {};
@@ -52,20 +51,15 @@ const Board = (props) => {
 
     const checkPosition = (event) => {
         var div = event.target;
-        if(isCpu)
-        {
-          const position = event.target.className;
-          if((position).includes("taken")){
-            div.className = "sunken";
-          }else{
-            div.className = "water"
-          }
-       }
+        const position = event.target.className;
+        if((position).includes("taken")){
+          div.className = "sunken";
+        }else{
+          div.className = "water"
+        }
     }
 
-    if(props.player === "CPU"){
-      generateRandomLocationsCpu(computerShips);
-    }
+    generateRandomLocationsCpu(computerShips);
 
   return (
     <div className='container d-flex align-items-center'>
@@ -74,11 +68,14 @@ const Board = (props) => {
         </div>
         <div className='battle-grid' id={props.player}>
         {squares.map((element, index) => (
-            <div key={index} id={index} className={element.position} onClick={checkPosition}></div>
+            <div key={index} id={index} 
+            className={element.position} 
+            onClick={checkPosition}
+            ></div>
         ))}
         </div>
     </div>
   )
 }
 
-export default Board
+export default BoardCpu
